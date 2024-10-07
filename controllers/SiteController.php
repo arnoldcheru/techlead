@@ -56,6 +56,11 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionMain()
+    {
+        return $this->render('main');
+    }
+
     /**
      * Displays homepage.
      *
@@ -70,42 +75,20 @@ class SiteController extends Controller
      * Login action.
      *
      * @return Response|string
-     */
-    public function actionLogin()
+     */public function actionLogin()
 {
     // Redirect to home if the user is already logged in
     if (!Yii::$app->user->isGuest) {
-        return $this->goHome();
+        return $this->goHome(); // Redirect to home
     }
 
-    // Create a new instance of the LoginForm model
     $model = new LoginForm();
 
-    // Load the form data and attempt to log in
     if ($model->load(Yii::$app->request->post()) && $model->login()) {
-        return $this->goBack();
+        return $this->goBack(); // Redirect to the previous page after successful login
     }
 
-    // Check if the user is not registered
-    if (User::find()->where(['username' => $model->username])->exists() && $model->username) {
-        Yii::$app->session->setFlash('error', 'User not registered.');
-    }
-
-    if (!User::find()->where(['username' => $model->username])->exists() && $model->username) {
-        Yii::$app->session->setFlash('error', 'User not registered.');
-        Yii::debug('User not registered flash message set');
-    }
-
-    if ($model->username && !User::find()->where(['username' => $model->username])->exists()) {
-        Yii::debug('Setting flash message: User not registered');
-        Yii::$app->session->setFlash('error', 'User not registered.');
-    }
-    
-
-    // Clear the password field for security
-    $model->password = '';
-
-    // Render the login view
+    // Render the login view with the model
     return $this->render('login', [
         'model' => $model,
     ]);
@@ -140,18 +123,7 @@ class SiteController extends Controller
      *
      * @return Response|string
      */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
-
-            return $this->refresh();
-        }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
-    }
+    
 
     /**
      * Displays article page.

@@ -26,6 +26,11 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
+
+        'DELETE article/delete' => 'article/delete',
+
+
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
             'viewPath' => '@app/mail',
@@ -41,6 +46,7 @@ $config = [
                 ],
             ],
         ],
+       
         'db' => $db,
         
         'urlManager' => [
@@ -49,9 +55,14 @@ $config = [
             'rules' => [
                 'article/index' => 'article/index', 
                 'site/view/<id:\d+>' => 'site/view',
+                    'site/main' => 'site/main',
+                    'site/login' => 'site/login',
+                    'site/logout'=> 'site/logout',
             ],
-        ],
+
         
+        ],
+
     ],
     'params' => $params,
 ];
@@ -72,5 +83,7 @@ if (YII_ENV_DEV) {
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];
 }
+
+
 
 return $config;

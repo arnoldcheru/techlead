@@ -3,12 +3,12 @@
 /** @var yii\web\View $this */
 /** @var string $content */
 
+
+
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap5\Breadcrumbs;
 use yii\bootstrap5\Html;
-use yii\bootstrap5\Nav;
-use yii\bootstrap5\NavBar;
 
 AppAsset::register($this);
 
@@ -24,43 +24,47 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <html lang="<?= Yii::$app->language ?>" class="h-100">
 <head>
     <title><?= Html::encode($this->title) ?></title>
+    <link rel="stylesheet" href="<?= Yii::getAlias('@web/css/site.css') ?>">
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
 <header id="header">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => ['class' => 'navbar-expand-md navbar-dark bg-dark fixed-top']
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Articles', 'url' => ['/article/index']],
-           // ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest
-                ? ['label' => 'Login', 'url' => ['/site/login']]
-                : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    ),
+    <!-- Add your header content here, such as navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="<?= Yii::getAlias('@web') ?>">TechLead</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['site/index']) ?>">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['article/index']) ?>">Articles</a></li>
+    <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['site/signup']) ?>">Sign Up</a></li>
+    <li class="nav-item"><a class="nav-link" href="<?= Yii::$app->urlManager->createUrl(['site/login']) ?>">Login</a></li>
 
-                    Yii::$app->user->isGuest
-                    ? ['label' => 'SignUp', 'url' => ['/site/signup']]
-                    :''
+    <?php if (!Yii::$app->user->isGuest): ?>
+    <li class="nav-item">
+        <?= Html::a('Logout', ['site/logout'], [
+            'class' => 'nav-link',
+            'data-method' => 'post', // This ensures the request is a POST
+            'data-confirm' => 'Are you sure you want to logout?', // Optional confirmation
+        ]) ?>
+    </li>
+<?php endif; ?>
 
-                    . Html::endForm()
-                    . '</li>'
-        ]
-    ]);
-    NavBar::end();
-    ?>
+</ul>
+
+
+
+
+
+
+            </div>
+        </div>
+    </nav>
 </header>
 
 <main id="main" class="flex-shrink-0" role="main">
@@ -76,7 +80,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <footer id="footer" class="mt-auto py-3 bg-light">
     <div class="container">
         <div class="row text-muted">
-            <div class="col-md-6 text-center text-md-start">&copy; Iansoft Technologies <?= date('Y') ?></div>
+            <div class="col-md-6 text-center text-md-start">© Copyright. TechLead Articles. All rights Reserved <?= date('Y') ?></div>
             <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
         </div>
     </div>

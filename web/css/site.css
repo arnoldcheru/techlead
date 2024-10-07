@@ -86,3 +86,191 @@ a.desc:after {
 .form-group {
     margin-bottom: 1rem;
 }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+}
+nav{
+    flex: 1;
+    text-align: right;
+
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+
+}
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 25x;
+
+}
+a{
+    text-decoration: none;
+    color: #555;
+
+}
+p{
+    color: #020101;
+
+}
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+.col-2{
+    flex-basis: 40%;
+    min-width: 100px;
+
+}
+.col-2 img{
+    max-width: 100%;
+    padding-right: 50px 0;
+
+}
+.col-2{
+    font-size: 25px;
+    line-height: 30px;
+    margin: 25px 0;
+
+}
+.btn{
+    display: inline-block;
+    background: #066508;
+    color: #020402;
+    padding: 8px 30px;
+    margin: 30px 0;
+    border-radius: 30px;
+    transition: background 0.5s;
+
+}
+.btn:hover{
+    background: #ff523b;
+
+}
+.h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #488034;
+}
+.header{
+    background: #A0C1E8;
+
+}
+.header .row{
+    margin-top: 70px;
+
+}
+.col-4{
+    flex-basis: 33%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+.tlead-body {
+    background-image: url('tlead.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+
+/* Footer */
+
+.footer{
+    background: #488034;
+    color: #0000008a;
+    font-size: 20px;
+    padding: 60px 0 20px;
+
+}
+.footer p{
+    color: #0000008a;
+
+}
+.footer h3{
+    color: #fff;
+    margin-bottom: 20px;
+
+}
+.footer-col-1, .footer-col-2, .footer-col-3{
+    min-width: 250px;
+    margin-bottom: 20px;
+
+}
+.footer-col-1{
+    flex-basis: 30%;
+
+}
+.footer-col-2{
+    flex: 1;
+    text-align: center;
+
+}
+.footer-col-2 img{
+    width: 250px;
+    margin-bottom: 20px;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    text-align: center;
+}
+.footer hr{
+    border: none;
+    background: #b5b5b5b5;
+    height: 1px;
+    margin: 20px 0;
+
+}
+
+
+
+#main {
+    flex: 1; /* Allow main to grow and push footer down */
+    position: relative; /* To position any elements inside if needed */
+    z-index: 1; /* Ensure content is above the background */
+}
+
+footer {
+    background-color: rgba(248, 249, 250, 0.8); /* Light footer with slight transparency */
+}
+
+body {
+    background-image: url('/images/wll.jpg'); /* Adjust path if necessary */
+    background-size: cover; /* Optional: to cover the entire background */
+    background-position: center; /* Optional: center the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    height: 100vh; /* Ensures the body takes the full viewport height */
+    margin: 0; /* Removes default body margin */
+}
+
+
+
+
+
+
+

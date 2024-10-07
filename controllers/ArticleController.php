@@ -35,7 +35,7 @@ class ArticleController extends Controller
                              'roles' => ['?'], // Only guests
                          ],
                          [
-                             'actions' => ['index', 'view','create'], // Actions for authenticated users
+                             'actions' => ['index', 'view','create','delete'], // Actions for authenticated users
                              'allow' => true,
                              'roles' => ['@'], // Only authenticated users
                          ],
@@ -159,16 +159,32 @@ class ArticleController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
-    {
-        $model = $this->findModel($id);
+{
+    // Find the model or throw a 404 error
+    $model = $this->findModel($id);
 
-        if ($model->created_by !== Yii::$app->user->id){
-            throw new ForbiddenHttpException('You do not have permission to delete this article');
-        }
-        $model->delete();
-
-        return $this->redirect(['index']);
+    // Check if the current user has permission to delete the article
+    if ($model->created_by !== Yii::$app->user->id) {
+        throw new ForbiddenHttpException('You do not have permission to delete this article.');
     }
+
+    // Use a transaction for safe deletion
+    $transaction = Yii::$app->db->beginTransaction();
+    try {
+        $model->delete();
+        $transaction->commit();
+        
+        // Set a flash message for user feedback
+        Yii::$app->session->setFlash('success', 'Article deleted successfully.');
+    } catch (\Exception $e) {
+        $transaction->rollBack();
+        Yii::$app->session->setFlash('error', 'Error deleting article: ' . $e->getMessage());
+    }
+
+    // Redirect to the index page
+    return $this->redirect(['index']);
+}
+
 
     /**
      * Finds the Article model based on its primary key value.
