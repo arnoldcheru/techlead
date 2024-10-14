@@ -50,7 +50,7 @@ $this->title = 'TechLead';
 
                     <p>Universities may be at the cutting edge of research into almost every other field, said Gordon Jones,
                         founding dean of the Boise State University College of Innovation and Design. <br> But when it comes to
-                        reconsidering the structure of their own, he said, “they’ve been very risk-averse.”</p>
+                        reconsidering the structure of their own, he said, “they’ve been very risk-averse.” </p> <br>
 
                     <p><a class="btn btn-outline-secondary" href="https://www.nytimes.com/2020/02/20/education/learning/education-technology.html" target="_blank">nytimes.com &raquo;</a></p>
                 </div>

@@ -31,9 +31,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 
 <header id="header">
-    <!-- Add your header content here, such as navigation -->
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
+           
             <a class="navbar-brand" href="<?= Yii::getAlias('@web') ?>">TechLead</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -81,7 +82,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <div class="container">
         <div class="row text-muted">
             <div class="col-md-6 text-center text-md-start">© Copyright. TechLead Articles. All rights Reserved <?= date('Y') ?></div>
-            <div class="col-md-6 text-center text-md-end"><?= Yii::powered() ?></div>
+            <div class="col-md-6 text-center text-md-end"> <!-- <?= Yii::powered() ?></div>  -->
         </div>
     </div>
 </footer>
