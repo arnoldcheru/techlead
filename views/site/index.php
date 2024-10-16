@@ -4,7 +4,6 @@
 
 $this->title = 'TechLead';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
