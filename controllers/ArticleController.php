@@ -35,7 +35,7 @@ class ArticleController extends Controller
                              'roles' => ['?'], // Only guests
                          ],
                          [
-                             'actions' => ['index', 'view','create','delete'], // Actions for authenticated users
+                             'actions' => ['index', 'view','create','update','delete'], // Actions for authenticated users
                              'allow' => true,
                              'roles' => ['@'], // Only authenticated users
                          ],
